@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cmp-cue
+  namespace: argocd
+data:
+  plugin.yaml: |
+    apiVersion: argoproj.io/v1alpha1
+    kind: ConfigManagementPlugin
+    metadata:
+      name: cmp-cue
+    spec:
+      version: v0.1
+      init:
+        command: [sh, -c, 'echo "Initializing CUE..."']
+      generate:
+        command: [sh, -c]
+        args: ["cue eval --expression output --out yaml"]

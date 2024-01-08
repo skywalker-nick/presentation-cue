@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-demo
+  namespace: argocd
+spec:
+  destination:
+    name: docker-desktop
+    namespace: default
+  project: default
+  source:
+    path: cue-example/
+    repoURL: https://github.com/skywalker-nick/presentation-cue
+    targetRevision: main
+    plugin:
+      name: cmp-cue-v0.1
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

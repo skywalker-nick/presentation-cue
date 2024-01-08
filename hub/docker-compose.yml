@@ -1,0 +1,7 @@
+version: "3"
+services:
+ test:
+    image: cuelang:latest
+    stdin_open: true
+    tty: true
+    restart: "no"

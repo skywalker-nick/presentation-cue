@@ -31,7 +31,7 @@ brew install argocd
 k patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
 
 # Get ArgoCD Admin Credentials
-k -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+k -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 
 # Login to ArgoCD from CLI
 argocd login localhost

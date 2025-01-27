@@ -3,7 +3,7 @@ package kubernetes
 import (
     corev1 "k8s.io/api/core/v1"
     appsv1 "k8s.io/api/apps/v1"
-	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+    metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
 deployment: appsv1.#Deployment & {
@@ -33,14 +33,14 @@ service: corev1.#Service & {
     apiVersion: "v1"
     kind:       "Service"
     metadata: {
-		name: parameter.name
+	name: parameter.name
         namespace: parameter.namespace
     }
     spec: {
-		type: "NodePort"
+	type: "NodePort"
         ports: [{
             port:       parameter.port
-			protocol: 	"TCP"
+	    protocol: 	"TCP"
         }]
         selector: app: parameter.name
     }
